@@ -1,2 +1,50 @@
-.venv
-.vscode
+# General
+.DS_Store
+.vscode/
+node_modules/
+.env
+
+# Python
+*.pyc
+__pycache__/
+venv/
+*.pyc
+*.pyo
+*.pyd
+*.pyc
+*.pyo
+*.pyd
+*.cache/
+*.egg-info/
+*.egg
+*.log
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# macOS
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# Compiled Python files
+*.pyc
+
+# Compiled C extension files
+*.so
+
+# Compiled Java files
+*.class
+
+# Compiled JavaScript files
+*.js
+
+# Dependency directories
+/bower_components/
+
+
+# Python Virtual Environment
+venv/
+.venv/
