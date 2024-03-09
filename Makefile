@@ -14,3 +14,11 @@ train:
 
 run:
 	./$(VENV_NAME)/Scripts/python -m src.model.model
+
+format:
+	./$(VENV_NAME)/Scripts/isort ./src/
+	./$(VENV_NAME)/Scripts/black ./src/
+	./$(VENV_NAME)/Scripts/flake8 ./src/
+
+
+

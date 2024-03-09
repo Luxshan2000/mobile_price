@@ -1,33 +1,41 @@
+import os
+
 import pandas as pd
-import numpy as np
+from sklearn.metrics import accuracy_score, confusion_matrix
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler, LabelEncoder
+from sklearn.preprocessing import LabelEncoder, StandardScaler
 from xgboost import XGBClassifier
-from sklearn.metrics import confusion_matrix, accuracy_score
-import logging.config
-from  src.utils.load_logging import(get_logger)
-from src.utils.model import(save_model)
-import os 
+
+from src.utils.load_logging import get_logger
+from src.utils.model import save_model
+
 # Define logger
 logger = get_logger(__name__)
 
 # Load the processed-data
 logger.info("Data Loading Started!")
-df_train = pd.read_csv(f'{os.getcwd()}/data/processed/train.csv')
+df_train = pd.read_csv(f"{os.getcwd()}/data/processed/train.csv")
+
+# Get columns
+columns = df_train.columns.values.tolist()
+columns.pop()
+logger.info(columns)
 
 # Split X,Y
-x = df_train.iloc[:,:-1].values
-y = df_train.iloc[:,-1].values
+x = df_train.iloc[:, :-1].values
+y = df_train.iloc[:, -1].values
 
 # Split train, test
 logger.info("Splitting data into train and test sets")
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.20, random_state=1234)
+x_train, x_test, y_train, y_test = train_test_split(
+    x, y, test_size=0.20, random_state=1234
+)
 
 # Scaling
 logger.info("Scaling features")
 standardScaler = StandardScaler()
-x_train[:,:] = standardScaler.fit_transform(x_train[:,:])
-x_test[:,:] = standardScaler.transform(x_test[:,:])
+x_train[:, :] = standardScaler.fit_transform(x_train[:, :])
+x_test[:, :] = standardScaler.transform(x_test[:, :])
 
 # Encoding
 logger.info("Encoding target variable")
@@ -53,5 +61,9 @@ logger.info(f"Confusion Matrix:\n{cm}")
 logger.info(f"Accuracy: {accuracy}")
 
 # Save Model
-save_model((XGB, standardScaler, labelEncoder))
-logger.info("XGBClassifier, StandardScaler, LabelEncoder stored succesfully!")
+save_model((XGB, standardScaler, labelEncoder, columns))
+logger.info(
+    "XGBClassifier, StandardScaler, \
+LabelEncoder,\
+Columns stored succesfully!"
+)
