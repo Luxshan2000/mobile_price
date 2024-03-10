@@ -15,6 +15,10 @@ train:
 run:
 	./$(VENV_NAME)/Scripts/python -m src.model.model
 
+start:
+	gunicorn -w 4 -b 0.0.0.0:8000 src.model.model:app
+
+
 format:
 	./$(VENV_NAME)/Scripts/isort ./src/
 	./$(VENV_NAME)/Scripts/black ./src/
