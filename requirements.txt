@@ -1,1 +1,10 @@
+pandas
+numpy
+xgboost
+pyyaml
+scikit-learn
+pytest
+requests
+flake8
+gunicorn
 black
