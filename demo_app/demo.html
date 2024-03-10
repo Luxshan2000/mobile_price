@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Price Prediction Demo</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        label {
+            font-weight: bold;
+            font-size: medium;
+        }
+        input, select {
+            font-size: medium;
+            padding: 8px;
+            border-radius: 5px;
+            outline: none;
+            border: none;
+        }
+        button[type="submit"] {
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        footer {
+            background-color: #f8f9fa;
+            padding: 10px 0;
+            font-size: small;
+        }
+        .gap{
+            column-gap: 5px;
+        }
+    </style>
+</head>
+<body style="margin: 0;padding: 10px;background-color: #f8f9fa;">
+    <div>
+        <h1 style="text-align: center;font-weight: bolder;color: black;margin: 0;">Mobile Price Prediction Demo</h1>
+        <p style="text-align: center;color: gray;margin: 5px 0 0 0;">This is a demo of a mobile price prediction model.<br/> You can predict approximate cost.</p>
+    </div>
+    <main>
+        <div class="container" style="margin-top: 30px;">
+            <div class="row justify-content-center">
+                <div class="col-md-8 p-3" style="border-radius: 10px;background-color:rgba(235, 235, 249, 0.9);">
+                    <form id="inputForm" style="row-gap: 10px;">
+                        <div class="form-group" style="display: flex; flex-wrap: wrap;">
+                            <div style="flex: 1; margin-right: 10px;">
+                                <label for="battery_power">Battery Power (in mAh):</label>
+                                <input type="text" id="battery_power" name="battery_power" class="form-control">
+                            </div>
+                            <div style="flex: 1; margin-right: 10px;">
+                                <label for="clock_speed">Clock Speed (GHz):</label>
+                                <input type="text" id="clock_speed" name="clock_speed" class="form-control">
+                            </div>
+                          
+                        </div>
+                    
+                        <div class="form-group" style="display: flex; flex-wrap: wrap;">
+                            <div style="flex: 1; margin-right: 10px;">
+                                <label for="fc">Front Camera (in MB):</label>
+                                <input type="text" id="fc" name="fc" class="form-control">
+                            </div>
+                            <div style="flex: 1; margin-right: 10px;">
+                                <label for="int_memory">Internal Memory (in GB):</label>
+                                <input type="text" id="int_memory" name="int_memory" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group" style="display: flex; flex-wrap: wrap;">
+                            <div style="flex: 1; margin-right: 10px;">
+                                <label for="talk_time">Talk Time (in hours):</label>
+                                <input type="text" id="talk_time" name="talk_time" class="form-control">
+                            </div>
+                            <div style="flex: 1;">
+                                <label for="m_dep">Mobile Depth (in cm):</label>
+                                <input type="text" id="m_dep" name="m_dep" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group" style="display: flex; flex-wrap: wrap;">
+                            <div style="flex: 1; margin-right: 10px;">
+                                <label for="mobile_wt">Mobile Weight (in g):</label>
+                                <input type="text" id="mobile_wt" name="mobile_wt" class="form-control">
+                            </div>
+                            <div style="flex: 1;">
+                                <label for="n_cores">Number of Cores:</label>
+                                <input type="text" id="n_cores" name="n_cores" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group" style="display: flex; flex-wrap: wrap;">
+                            <div style="flex: 1; margin-right: 10px;">
+                                <label for="pc">Primary Camera (in MB):</label>
+                                <input type="text" id="pc" name="pc" class="form-control">
+                            </div>
+                            <div style="flex: 1;">
+                                <label for="px_height">Pixel Resolution Height:</label>
+                                <input type="text" id="px_height" name="px_height" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group" style="display: flex; flex-wrap: wrap;">
+                            <div style="flex: 1; margin-right: 10px;">
+                                <label for="px_width">Pixel Resolution Width:</label>
+                                <input type="text" id="px_width" name="px_width" class="form-control">
+                            </div>
+                            <div style="flex: 1;">
+                                <label for="ram">RAM (in GB):</label>
+                                <input type="text" id="ram" name="ram" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group" style="display: flex; flex-wrap: wrap;">
+                            <div style="flex: 1; margin-right: 10px;">
+                                <label for="sc_h">Screen Height (in cm):</label>
+                                <input type="text" id="sc_h" name="sc_h" class="form-control">
+                            </div>
+                            <div style="flex: 1;">
+                                <label for="sc_w">Screen Width (in cm):</label>
+                                <input type="text" id="sc_w" name="sc_w" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group gap" style="display: flex; flex-wrap: wrap;">
+                            <div style="flex: 1;">
+                                <label for="three_g">3G:</label>
+                                <select id="three_g" name="three_g" class="form-control">
+                                    <option value="0">No</option>
+                                    <option value="1">Yes</option>
+                                </select>
+                            </div>
+                            <div style="flex: 1; margin-right: 10px;">
+                                <label for="touch_screen">Touch Screen:</label>
+                                <select id="touch_screen" name="touch_screen" class="form-control">
+                                    <option value="0">No</option>
+                                    <option value="1">Yes</option>
+                                </select>
+                            </div>
+                            <div style="flex: 1;">
+                                <label for="wifi">WiFi:</label>
+                                <select id="wifi" name="wifi" class="form-control">
+                                    <option value="0">No</option>
+                                    <option value="1">Yes</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group gap" style="display: flex; flex-wrap: wrap;">
+                            <div style="flex: 1;">
+                                <label for="blue">Bluetooth:</label>
+                                <select id="blue" name="blue" class="form-control">
+                                    <option value="0">No</option>
+                                    <option value="1">Yes</option>
+                                </select>
+                            </div>
+                            <div style="flex: 1;">
+                                <label for="dual_sim">Dual SIM:</label>
+                                <select id="dual_sim" name="dual_sim" class="form-control">
+                                    <option value="0">No</option>
+                                    <option value="1">Yes</option>
+                                </select>
+                            </div>
+                            <div style="flex: 1;">
+                                <label for="four_g">4G:</label>
+                                <select id="four_g" name="four_g" class="form-control">
+                                    <option value="0">No</option>
+                                    <option value="1">Yes</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div style="text-align: center;">
+                            <button type="submit" style="width: 200px;" class="btn btn-primary">Score</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="text-center mt-2">
+        All Rights Reserved <br/>&copy;2024
+    </footer>
+</body>
+</html>

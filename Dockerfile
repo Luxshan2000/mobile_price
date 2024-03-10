@@ -1,4 +1,4 @@
-FROM python:3.9
+FROM python:3.8-slim
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
@@ -12,6 +12,6 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-EXPOSE 5000
+EXPOSE 8000
 
-CMD ["gunicorn", "--bind", "0.0.0.0:5000", "src.model.model:app"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "src.model.model:app"]
