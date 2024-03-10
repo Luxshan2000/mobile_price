@@ -2,18 +2,18 @@ PYTHON = python
 VENV_NAME = venv
 
 venv:
-	python -m venv $(VENV_NAME) 
-	./$(VENV_NAME)/Scripts/python -m pip install --upgrade pip
+	python3 -m venv $(VENV_NAME) 
+	./$(VENV_NAME)/bin/python3 -m pip install --upgrade pip
 
 .PHONY: setup
 setup: venv
-	$(VENV_NAME)/Scripts/pip install -r requirements.txt
+	$(VENV_NAME)/bin/pip3 install -r requirements.txt
 
 train:
-	./$(VENV_NAME)/Scripts/python -m src.model.train
+	./$(VENV_NAME)/bin/python3 -m src.model.train
 
 run:
-	./$(VENV_NAME)/Scripts/python -m src.model.model
+	./$(VENV_NAME)/bin/python3 -m src.model.model
 
 start:
 	gunicorn -w 4 -b 0.0.0.0:8000 src.model.model:app

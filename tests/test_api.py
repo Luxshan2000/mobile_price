@@ -2,7 +2,7 @@ import requests
 import json 
 
 def test_end_point_test():
-    url = "http://127.0.0.1:5000/api/predict"
+    url = "http://0.0.0.0:8000/api/predict"
     data = {
         "columns":['battery_power','blue','clock_speed','dual_sim','fc','four_g','int_memory','m_dep','mobile_wt','n_cores','pc','px_height','px_width','ram','sc_h','sc_w','talk_time','three_g','touch_screen','wifi']
 ,

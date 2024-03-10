@@ -17,7 +17,6 @@ venv/
 *.cache/
 *.egg-info/
 *.egg
-*.log
 
 # Jupyter Notebooks
 .ipynb_checkpoints/
